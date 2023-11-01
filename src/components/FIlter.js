@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Button, Form, Modal } from 'react-bootstrap'
+import { Button, Form, InputGroup, Modal } from 'react-bootstrap'
 
-function FIlter({setSearch ,addamovie }) {
+function FIlter({setSearch ,addamovie, setRate , rating }) {
   const [show,setShow]=useState(false)
+  const rate = [1, 2, 3, 4, 5];
   const [newMovie,setNewMovie]=useState({
     title:'',
     descripotion:'',
@@ -21,6 +22,15 @@ function FIlter({setSearch ,addamovie }) {
   }
 
   return (<div>
+    <InputGroup className="mb-3">
+        <InputGroup.Text id="basic-addon1"><i className="fa-solid fa-magnifying-glass"></i></InputGroup.Text>
+        <Form.Control
+          placeholder="Username"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+          onChange={(e)=>setSearch(e.target.value)}
+          />
+      </InputGroup>
     <button onClick={Open}>
       Add a movie
     </button>
@@ -87,7 +97,15 @@ function FIlter({setSearch ,addamovie }) {
           </Button>
         </Modal.Footer>
       </Modal>
-      
+    </div>
+    <div>
+      {rate.map((el) =>
+        rating < el ? (
+          <i className="fa-regular fa-star"></i>
+        ) : (
+          <i className="fa-solid fa-star"  onClick={()=>setRate(el)}></i>
+        )
+      )}
     </div>
     </div>
   )

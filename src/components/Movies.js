@@ -49,11 +49,12 @@ function Movies() {
       setMovies((prevMovies)=> [...prevMovies, newMovie])
     }
    const [search,setSearch]= useState('')
+   const [rate, setRate] = useState(1)
     return (
       <div className="App">
        
-      <FIlter setSearch={setSearch} addamovie={addMovie}/>
-      <MovieList movies={movies} search={search}/>
+      <FIlter setSearch={setSearch} addamovie={addMovie} setRate={setRate} rating={movies.rating} rate={rate}/>
+      <MovieList movies={movies} search={search} rate={rate}/>
       </div>
     );
   }
